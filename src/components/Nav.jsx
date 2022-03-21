@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { BiSearch } from "react-icons/bi";
 
 export default function Nav() {
   const [selectedTab, setSelectedTab] = useState(1);
@@ -37,6 +38,9 @@ export default function Nav() {
         </NavTab>
         <NavSearch>
           <SearchBar placeholder="닉네임 검색" />
+          <span>
+            <BiSearch color="white" size={20} />
+          </span>
         </NavSearch>
       </NavWrapper>
     </NavContainer>
@@ -110,7 +114,19 @@ const TabItem = styled.li`
   }
 `;
 
-const NavSearch = styled.div``;
+const NavSearch = styled.div`
+  & span {
+    position: absolute;
+    opacity: 0.5;
+    top: 68px;
+    right: 95px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+`;
 
 const SearchBar = styled.input`
   width: 195px;

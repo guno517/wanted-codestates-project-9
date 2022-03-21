@@ -247,8 +247,8 @@ const Form = styled.div`
   }
   & input {
     padding: 0;
-    height: 44px;
-    width: 300px;
+    height: 50px;
+    width: 400px;
     outline: 0;
     border: 0;
     font-size: 24px;
@@ -258,6 +258,11 @@ const Form = styled.div`
     transition: opacity 0.5s;
     animation: ${show} 1s ease-in;
     animation-fill-mode: forwards;
+
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+    }
   }
 
   & button {
