@@ -1,18 +1,38 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
-  const [navState, setNavState] = useState("home");
+  const [selectedTab, setSelectedTab] = useState(1);
+  const TabArr = [
+    { id: 1, title: "홈", link: "/" },
+    { id: 2, title: "랭킹", link: "/rank" },
+    { id: 3, title: "카트", link: "/kart" },
+    { id: 4, title: "트랙", link: "/track" },
+  ];
+
+  const handleClickTab = (id) => {
+    setSelectedTab(id);
+  };
 
   return (
     <NavContainer>
       <NavWrapper>
         <NavTab>
           <TabList>
-            <TabItem>홈</TabItem>
-            <TabItem>랭킹</TabItem>
-            <TabItem>카트</TabItem>
-            <TabItem>트랙</TabItem>
+            {TabArr.map((item) => {
+              return (
+                <Link to={`${item.link}`} style={{ textDecoration: "none" }}>
+                  <TabItem
+                    key={item.id}
+                    onClick={() => handleClickTab(item.id)}
+                    className={selectedTab === item.id ? "selected" : "none"}
+                  >
+                    {item.title}
+                  </TabItem>
+                </Link>
+              );
+            })}
           </TabList>
         </NavTab>
         <NavSearch>
@@ -56,6 +76,18 @@ const TabItem = styled.li`
   transition: 0.3s ease;
   padding: 10px;
   text-align: center;
+
+  &.selected {
+    opacity: 1;
+    &:after {
+      opacity: 1;
+      border-bottom: 5px solid white;
+      transform: scaleX(1);
+      transform-origin: 0% 50%;
+      transition: transform 250ms ease-in-out;
+      bottom: 0;
+    }
+  }
 
   &:hover {
     opacity: 1;
