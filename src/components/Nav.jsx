@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function Nav() {
+  const [navState, setNavState] = useState("home");
+
   return (
     <NavContainer>
       <NavWrapper>
@@ -32,7 +34,7 @@ const NavWrapper = styled.div`
   justify-content: space-between;
   padding: 5px 10px;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 5rem;
 `;
 
 const NavTab = styled.div``;
@@ -45,13 +47,15 @@ const TabList = styled.ul`
 `;
 
 const TabItem = styled.li`
-  margin: 0 20px;
+  cursor: pointer;
+  margin: 0 5px;
   color: white;
   box-sizing: border-box;
   height: 3rem;
   opacity: 0.5;
   transition: 0.3s ease;
   padding: 10px;
+  text-align: center;
 
   &:hover {
     opacity: 1;
@@ -62,6 +66,7 @@ const TabItem = styled.li`
     content: "";
     transform: scaleX(0);
     padding-bottom: 18px;
+    width: 60px;
   }
   &:hover::after {
     opacity: 1;
@@ -80,7 +85,6 @@ const SearchBar = styled.input`
   height: 32px;
   padding-left: 10px;
   padding-right: 25px;
-  margin-right: 25px;
   font-size: 12px;
   background-color: transparent;
   outline: 0;
