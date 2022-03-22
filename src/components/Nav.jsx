@@ -59,9 +59,14 @@ const NavWrapper = styled.div`
   height: 50px;
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 5px 0;
   align-items: center;
   margin: 0 5rem;
+  min-width: 1000px;
+
+  @media screen and (max-width: 1200px) {
+    margin: 0;
+  }
 `;
 
 const NavTab = styled.div``;
@@ -124,6 +129,13 @@ const NavSearch = styled.div`
     top: 68px;
     right: 95px;
     cursor: pointer;
+    @media screen and (max-width: 1200px) {
+      right: 0;
+    }
+
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
 
     &:hover {
       opacity: 1;
