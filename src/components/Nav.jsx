@@ -23,9 +23,12 @@ export default function Nav() {
           <TabList>
             {TabArr.map((item) => {
               return (
-                <Link to={`${item.link}`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`${item.link}`}
+                  key={item.id}
+                  style={{ textDecoration: "none" }}
+                >
                   <TabItem
-                    key={item.id}
                     onClick={() => handleClickTab(item.id)}
                     className={selectedTab === item.id ? "selected" : "none"}
                   >
