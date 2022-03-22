@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { BiSearch } from "react-icons/bi";
 
 export default function Nav() {
   const [selectedTab, setSelectedTab] = useState(1);
@@ -22,9 +23,12 @@ export default function Nav() {
           <TabList>
             {TabArr.map((item) => {
               return (
-                <Link to={`${item.link}`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`${item.link}`}
+                  key={item.id}
+                  style={{ textDecoration: "none" }}
+                >
                   <TabItem
-                    key={item.id}
                     onClick={() => handleClickTab(item.id)}
                     className={selectedTab === item.id ? "selected" : "none"}
                   >
@@ -37,6 +41,9 @@ export default function Nav() {
         </NavTab>
         <NavSearch>
           <SearchBar placeholder="닉네임 검색" />
+          <span>
+            <BiSearch color="white" size={20} />
+          </span>
         </NavSearch>
       </NavWrapper>
     </NavContainer>
@@ -52,9 +59,14 @@ const NavWrapper = styled.div`
   height: 50px;
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 5px 0;
   align-items: center;
   margin: 0 5rem;
+  min-width: 1000px;
+
+  @media screen and (max-width: 1200px) {
+    margin: 0;
+  }
 `;
 
 const NavTab = styled.div``;
@@ -110,7 +122,26 @@ const TabItem = styled.li`
   }
 `;
 
-const NavSearch = styled.div``;
+const NavSearch = styled.div`
+  & span {
+    position: absolute;
+    opacity: 0.5;
+    top: 68px;
+    right: 95px;
+    cursor: pointer;
+    @media screen and (max-width: 1200px) {
+      right: 0;
+    }
+
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+`;
 
 const SearchBar = styled.input`
   width: 195px;

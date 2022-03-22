@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 export default function Home() {
-  setTimeout(function () {}, 100);
+  const [nick, setNick] = useState("");
+
+  const onChangeNick = (e) => {
+    setNick(e.target.value);
+  };
 
   return (
     <MainHome>
@@ -17,8 +22,14 @@ export default function Home() {
           <SearchForm className="active">
             <Form>
               <div>유저</div>
-              <input type={"text"} placeholder="카트라이더 닉네임을 입력" />
-              <button>TMI</button>
+              <input
+                type={"text"}
+                placeholder="카트라이더 닉네임을 입력"
+                onChange={onChangeNick}
+              />
+              <Link to={`/user/${nick}`}>
+                <button>TMI</button>
+              </Link>
             </Form>
           </SearchForm>
           <img
@@ -210,6 +221,7 @@ const Title = styled.div`
 
 const SearchForm = styled.div`
   position: absolute;
+  z-index: 100;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -223,16 +235,12 @@ const SearchForm = styled.div`
   padding: 5px;
   animation: ${wide} 1s ease;
   animation-fill-mode: forwards;
-  /* &.active {
-    width: 655px;
-  } */
 `;
 
-const Form = styled.div`
+const Form = styled.form`
   & div {
     position: absolute;
     display: block;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     top: 7px;
     width: 100px;
@@ -242,13 +250,12 @@ const Form = styled.div`
     font-size: 16px;
     color: #fff;
     background: transparent;
-    z-index: -1;
     border-right: 1px solid #fff;
   }
   & input {
     padding: 0;
-    height: 44px;
-    width: 300px;
+    height: 50px;
+    width: 400px;
     outline: 0;
     border: 0;
     font-size: 24px;
@@ -258,6 +265,11 @@ const Form = styled.div`
     transition: opacity 0.5s;
     animation: ${show} 1s ease-in;
     animation-fill-mode: forwards;
+
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+    }
   }
 
   & button {

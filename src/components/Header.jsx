@@ -34,8 +34,13 @@ const HeaderContainer = styled.div`
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 0;
   margin: 0 5rem;
+  min-width: 1000px;
+
+  @media screen and (max-width: 1200px) {
+    margin: 0;
+  }
 `;
 
 const HeaderLeft = styled.div`
