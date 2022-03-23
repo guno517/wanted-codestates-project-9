@@ -20,19 +20,31 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export default function RankChart({ recentRank }) {
-  const dataArr = recentRank;
-  const labelArr = recentRank.map((game, idx) => `이전 ${idx + 1}경기`);
+export default function RecordGraph({ sendData }) {
+  const labelArr = sendData[0].map((time) => time);
   const data = {
-    labels: labelArr,
+    // labels: labelArr,
+    labels: [
+      "2'04",
+      "2'10",
+      "2'16",
+      "2'22",
+      "2'28",
+      "2'34",
+      "2'40",
+      "2'46",
+      "2'52",
+      "2'58",
+    ],
     datasets: [
       {
-        label: "순위",
-        fill: false,
+        label: "라이더비율",
+        fill: "start",
+        backgroundColor: "#07f",
         borderColor: "#07f",
         borderWidth: 1,
         pointRadius: 2,
-        data: dataArr,
+        data: [0.03, 0.58, 1.14, 4.02, 2.97, 2.08, 1.53, 1.38, 1.12, 0.66],
       },
     ],
   };
@@ -46,20 +58,16 @@ export default function RankChart({ recentRank }) {
     scales: {
       xAxes: {
         ticks: {
-          display: false,
+          display: true,
         },
-        grid: {
-          display: false,
-        },
-        reverse: true,
       },
       yAxes: {
-        reverse: true,
+        ticks: { reverse: true },
       },
     },
   };
   return (
-    <div>
+    <div style={{ maxWidth: "400px" }}>
       <Line
         data={data}
         options={options}

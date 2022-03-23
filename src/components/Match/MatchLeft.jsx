@@ -2,55 +2,141 @@ import React from "react";
 import styled from "styled-components";
 import RecordGraph from "./RecordGraph";
 
-export default function MatchLeft() {
+export default function MatchLeft({
+  sortedTrackData,
+  recordState,
+  setRecordState,
+}) {
+  const onClickTrackTab = () => {
+    setRecordState("트랙");
+  };
+  const onClickKartTab = () => {
+    setRecordState("카트");
+  };
+  const playTime = (match) => {
+    if (match === "") {
+      return "";
+    } else {
+      let sec = Math.floor(match / 1000);
+      let mil = match.substring(match.length - 3).slice(0, 2);
+      let minute = Math.floor(sec / 60);
+      let seconds = sec % 60;
+      return `${minute}'${seconds.toString().padStart(2, 0)}'${mil}`;
+    }
+  };
+
+  const trackData = sortedTrackData.map((time) => time.records);
+  const sendData = trackData.map((time) =>
+    time.map((record) => playTime(record.toString()))
+  );
   return (
     <Left>
       <TabBtn>
         <TabList>
           <TabItem>
-            <Tab className="active">트랙</Tab>
+            <Tab
+              className={recordState === "트랙" ? "active" : ""}
+              onClick={onClickTrackTab}
+            >
+              트랙
+            </Tab>
           </TabItem>
           <TabItem>
-            <Tab>카트</Tab>
+            <Tab
+              className={recordState === "카트" ? "active" : ""}
+              onClick={onClickKartTab}
+            >
+              카트
+            </Tab>
           </TabItem>
         </TabList>
       </TabBtn>
       <TabTable style={{ maxWidth: "400px" }}>
         <TableTItle>
           <div>
-            <span>트랙</span>전적
+            <span>{recordState}</span>전적
           </div>
           <div>평균 상위 8.21%</div>
         </TableTItle>
-        <ChartTable>
-          <RecordGraph />
-          <RecordTable>
-            <Record>
-              <Thead>
-                <tr>
-                  <th>선택</th>
-                  <th>트랙</th>
-                  <th>횟수</th>
-                  <th>승률</th>
-                  <th>기록</th>
-                  <th>상위</th>
-                </tr>
-              </Thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <input type={"radio"} />
-                  </td>
-                  <td>차이나 서안 병마용</td>
-                  <td>11</td>
-                  <td>9%</td>
-                  <td>1'48'49</td>
-                  <td>9%</td>
-                </tr>
-              </tbody>
-            </Record>
-          </RecordTable>
-        </ChartTable>
+        {recordState === "트랙" ? (
+          <ChartTable>
+            <RecordGraph sendData={sendData} />
+            <RecordTable>
+              <Record>
+                <Thead>
+                  <tr>
+                    <th>선택</th>
+                    <th className="track">트랙</th>
+                    <th>횟수</th>
+                    <th>승률</th>
+                    <th>기록</th>
+                    <th>상위</th>
+                  </tr>
+                </Thead>
+                <tbody>
+                  {sortedTrackData &&
+                    sortedTrackData.map((game) => {
+                      return (
+                        <tr key={game.id}>
+                          <td>
+                            <input type={"radio"} />
+                          </td>
+                          <td>{game.trackN}</td>
+                          <td>{game.count}</td>
+                          <td>{Math.round((game.win / game.count) * 100)}%</td>
+                          <td>{playTime(game.bestRecord.toString())}</td>
+                          <td>%</td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </Record>
+            </RecordTable>
+          </ChartTable>
+        ) : (
+          <ChartTable>
+            {/* <RecordGraph sendData={sendData} /> */}
+            <RecordTable>
+              <Record>
+                <Thead>
+                  <tr>
+                    <th>선택</th>
+                    <th className="track">카트</th>
+                    <th>횟수</th>
+                    <th>승률</th>
+                    <th>리타율</th>
+                  </tr>
+                </Thead>
+                <tbody>
+                  {/* {sortedTrackData &&
+                    sortedTrackData.map((game) => {
+                      return (
+                        <tr key={game.id}>
+                          <td>
+                            <input type={"radio"} />
+                          </td>
+                          <td>{game.trackN}</td>
+                          <td>{game.count}</td>
+                          <td>{Math.round((game.win / game.count) * 100)}%</td>
+                          <td>{playTime(game.bestRecord.toString())}</td>
+                          <td>%</td>
+                        </tr>
+                      );
+                    })} */}
+                  <tr>
+                    <td>
+                      <input type={"radio"} />
+                    </td>
+                    <td>몬스터 X LE</td>
+                    <td>195</td>
+                    <td>34%</td>
+                    <td>8%</td>
+                  </tr>
+                </tbody>
+              </Record>
+            </RecordTable>
+          </ChartTable>
+        )}
       </TabTable>
     </Left>
   );
@@ -140,6 +226,14 @@ const Record = styled.table`
 
 const Thead = styled.thead`
   background-color: #e9e9e9;
+
+  & th {
+    width: 45px;
+  }
+
+  & .track {
+    width: 200px;
+  }
 
   & th:after {
     content: "";

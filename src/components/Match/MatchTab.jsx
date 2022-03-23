@@ -1,13 +1,38 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function MatchTab() {
+export default function MatchTab({ tabState, setTabState }) {
+  const onClickAll = () => {
+    setTabState("all");
+  };
+  const onClickFast = () => {
+    setTabState("fast");
+  };
+  const onClickBoost = () => {
+    setTabState("boost");
+  };
+
   return (
     <Tab>
       <TabList>
-        <TabItem className="active">통합</TabItem>
-        <TabItem>매우빠름</TabItem>
-        <TabItem>무한부스터</TabItem>
+        <TabItem
+          className={tabState === "all" ? "active" : ""}
+          onClick={onClickAll}
+        >
+          통합
+        </TabItem>
+        <TabItem
+          className={tabState === "fast" ? "active" : ""}
+          onClick={onClickFast}
+        >
+          매우빠름
+        </TabItem>
+        <TabItem
+          className={tabState === "boost" ? "active" : ""}
+          onClick={onClickBoost}
+        >
+          무한부스터
+        </TabItem>
       </TabList>
       <div style={{ display: "flex" }}>
         <TabRetire>리타이어 노출</TabRetire>
@@ -38,6 +63,7 @@ const TabList = styled.ul`
 `;
 
 const TabItem = styled.li`
+  cursor: pointer;
   float: left;
   width: 81px;
   height: 35px;
