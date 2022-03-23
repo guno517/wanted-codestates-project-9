@@ -1,14 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function OverallChart({ winRate, perimeterRate, retireRate }) {
+export default function OverallChart({ win, perimeter, retire }) {
+  const winRate = Math.round((win / 200) * 100);
+  const perimeterRate = Math.round((perimeter / 200) * 100);
+  const retireRate = Math.round((retire / 200) * 100);
   return (
     <OverallWrapper>
       <OverallTitle>
         <div>
           <span>종합</span> 전적
         </div>
-        <div>40전 22승 18패</div>
+        <div>
+          200전 {win}승 {200 - win}패
+        </div>
       </OverallTitle>
       <OverallItemWrapper>
         <OverallItem>

@@ -7,8 +7,22 @@ import { AiFillBell } from "react-icons/ai";
 import { GiShare } from "react-icons/gi";
 import { BiCalculator } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
+import { keyframes } from "styled-components";
 
-export default function UserInfoCard({ nickname, character }) {
+export default function UserInfoCard({
+  dataState,
+  setDataState,
+  nickname,
+  character,
+}) {
+  const currentUrl = window.location.href;
+  const onClickIndi = () => {
+    setDataState("indi");
+  };
+  const onClickTeam = () => {
+    setDataState("team");
+  };
+
   return (
     <ProfileWrapper>
       <ApiInfo>
@@ -31,11 +45,17 @@ export default function UserInfoCard({ nickname, character }) {
         <UserNameWrapper>
           <UserName>{nickname}</UserName>
           <UserTeamWrapper>
-            <UserIndi>
+            <UserIndi
+              className={dataState === "indi" ? "active" : ""}
+              onClick={onClickIndi}
+            >
               <HiUser size={16} />
               개인전
             </UserIndi>
-            <UserTeam>
+            <UserTeam
+              className={dataState === "team" ? "active" : ""}
+              onClick={onClickTeam}
+            >
               <HiUserGroup size={16} />
               팀전
             </UserTeam>
@@ -66,7 +86,7 @@ export default function UserInfoCard({ nickname, character }) {
         </PageViewWrapper>
       </UserInfo>
       <VirtualFight>
-        <div>1대1 매칭 시뮬레이터 - 'bbeesstt' 와 가상 대결을 펼쳐보세요.</div>
+        <div>{`1대1 매칭 시뮬레이터 - '${nickname}' 와 가상 대결을 펼쳐보세요.`}</div>
         <div className="match">
           <BiCalculator size={16} />
           매칭하기
@@ -112,9 +132,20 @@ const UserName = styled.div`
 `;
 
 const UserTeamWrapper = styled.div`
+  cursor: pointer;
   display: inline-block;
   padding-right: 15px;
   color: #07f;
+
+  & .active {
+    background: #07f;
+    color: white;
+
+    & svg {
+      color: white;
+    }
+  }
+
   & span {
     vertical-align: middle;
     display: inline-block;
@@ -215,6 +246,15 @@ const PageView = styled.div`
   }
 `;
 
+const gradientBG = keyframes`
+  0%, 100%{
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+`;
+
 const VirtualFight = styled.div`
   display: flex;
   justify-content: space-between;
@@ -223,7 +263,7 @@ const VirtualFight = styled.div`
   line-height: 45px;
   background: linear-gradient(-45deg, #ee7752, #f62459, #07f, #23d5ab);
   background-size: 400% 400%;
-  animation: gradientBG 20s ease infinite;
+  animation: ${gradientBG} 20s ease infinite;
   color: #fff;
   margin-top: 20px;
   padding-left: 20px;

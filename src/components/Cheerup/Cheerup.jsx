@@ -10,7 +10,10 @@ export default function Cheerup() {
     nick: "",
     message: "",
   });
-  const size = JSON.parse(localStorage.getItem(`${nickname}cheerup`)).length;
+  let size = 0;
+  // if (JSON.parse(localStorage.getItem(`${nickname}cheerup`)).length !== null) {
+  //   size = JSON.parse(localStorage.getItem(`${nickname}cheerup`)).length;
+  // }
   const { nick, message } = cheerupData;
 
   const onChangeNick = (e) => {
@@ -32,7 +35,6 @@ export default function Cheerup() {
     localStorage.setItem(`${nickname}cheerup`, JSON.stringify(container));
     setCheerupData({ nick: "", message: "" });
   };
-  console.log(new Date());
   function getNowTime24() {
     let NOW_DATE = new Date();
 
