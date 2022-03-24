@@ -5,6 +5,7 @@ import { BiSearch } from "react-icons/bi";
 
 export default function Nav() {
   const [selectedTab, setSelectedTab] = useState(1);
+  const [nick, setNick] = useState("");
   const TabArr = [
     { id: 1, title: "홈", link: "/" },
     { id: 2, title: "랭킹", link: "/rank" },
@@ -14,6 +15,14 @@ export default function Nav() {
 
   const handleClickTab = (id) => {
     setSelectedTab(id);
+  };
+
+  const onChangeNick = (e) => {
+    setNick(e.target.value);
+  };
+
+  const onClickSearch = () => {
+    setNick("");
   };
 
   return (
@@ -40,10 +49,12 @@ export default function Nav() {
           </TabList>
         </NavTab>
         <NavSearch>
-          <SearchBar placeholder="닉네임 검색" />
-          <span>
-            <BiSearch color="white" size={20} />
-          </span>
+          <SearchBar placeholder="닉네임 검색" onChange={onChangeNick} />
+          <Link to={`/user/${nick}`} onClick={onClickSearch}>
+            <span>
+              <BiSearch color="white" size={20} />
+            </span>
+          </Link>
         </NavSearch>
       </NavWrapper>
     </NavContainer>
