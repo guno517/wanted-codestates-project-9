@@ -5,18 +5,17 @@ import Loading from "components/Loading";
 import styled from "styled-components";
 import RankHead from "components/Ranking/RankHead";
 import RankThree from "components/Ranking/RankThree";
+import ModalContents from "components/Ranking/ModalContents";
 
 export default function Rank() {
   const [matchType, setMatchType] = useState(
     "7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a"
   );
   const [dataState, setDataState] = useState("indi");
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const onClickIndi = () => {
-    setDataState("indi");
-  };
-  const onClickTeam = () => {
-    setDataState("team");
+  const showModal = () => {
+    setIsOpenModal(!isOpenModal);
   };
 
   const { data } = useQuery([matchType], () => rankData(matchType), {
@@ -28,40 +27,45 @@ export default function Rank() {
   }
 
   return (
-    <ContentWrapper>
-      <RankWrapper>
-        <RankTop>
-          <RankHead dataState={dataState} setDataState={setDataState} />
-          <RankMiddle>
-            <RankThree data={data} />
-          </RankMiddle>
-        </RankTop>
-        <RankListWrapper>
-          <RankList>
-            <Ul>
-              <Li>
-                <div className="head">
-                  <span className="rank">#</span>
-                  <span className="nick">닉네임 (순위변동)</span>
-                  <span className="pts">누적포인트 (전일대비)</span>
-                  <span className="cnt">주행횟수</span>
-                  <span className="avg">평균순위</span>
-                </div>
-              </Li>
-              <Li>
-                <div className="listItem">
-                  <span className="rank">4</span>
-                  <span className="nick">1234Kcm</span>
-                  <span className="pts">3,608 PT</span>
-                  <span className="cnt">508회</span>
-                  <span className="avg">2.3위</span>
-                </div>
-              </Li>
-            </Ul>
-          </RankList>
-        </RankListWrapper>
-      </RankWrapper>
-    </ContentWrapper>
+    // <ContentWrapper>
+    <RankWrapper>
+      <ModalContents openModal={isOpenModal} setOpenModal={setIsOpenModal} />
+      <RankTop>
+        <RankHead
+          dataState={dataState}
+          setDataState={setDataState}
+          showModal={showModal}
+        />
+        <RankMiddle>
+          <RankThree data={data} />
+        </RankMiddle>
+      </RankTop>
+      <RankListWrapper>
+        <RankList>
+          <Ul>
+            <Li>
+              <div className="head">
+                <span className="rank">#</span>
+                <span className="nick">닉네임 (순위변동)</span>
+                <span className="pts">누적포인트 (전일대비)</span>
+                <span className="cnt">주행횟수</span>
+                <span className="avg">평균순위</span>
+              </div>
+            </Li>
+            <Li>
+              <div className="listItem">
+                <span className="rank">4</span>
+                <span className="nick">1234Kcm</span>
+                <span className="pts">3,608 PT</span>
+                <span className="cnt">508회</span>
+                <span className="avg">2.3위</span>
+              </div>
+            </Li>
+          </Ul>
+        </RankList>
+      </RankListWrapper>
+    </RankWrapper>
+    // </ContentWrapper>
   );
 }
 
@@ -86,6 +90,11 @@ const RankTop = styled.div`
   height: 650px;
   background: #005fcc;
   overflow: hidden;
+
+  @media screen and (max-width: 1200px) {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const RankMiddle = styled.div`
@@ -93,8 +102,12 @@ const RankMiddle = styled.div`
   z-index: 5;
   position: relative;
   padding-top: 55px;
-  width: 1300px;
-  margin: 0 5rem;
+  width: 100%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1300px) {
+    margin: 0;
+  }
 `;
 
 const RankListWrapper = styled.div`

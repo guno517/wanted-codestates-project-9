@@ -13,7 +13,6 @@ export default function RankerCard({
   retireRate,
 }) {
   const [medal, setMedal] = useState();
-  console.log(rank);
   useEffect(() => {
     if (rank === "1") {
       setMedal("goldmedal");

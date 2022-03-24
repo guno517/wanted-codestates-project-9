@@ -45,6 +45,8 @@ const TopRank = styled.div`
   z-index: 5;
   position: relative;
   padding-top: 30px;
-  width: 100%;
-  margin: 0 5rem;
+  /* width: 1300px; */
+  margin: 0 auto;
+
+  min-width: 1300px;
 `;

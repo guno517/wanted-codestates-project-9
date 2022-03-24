@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { HiUser, HiUserGroup } from "react-icons/hi";
 
-export default function RankHead({ dataState, setDataState }) {
+export default function RankHead({ dataState, setDataState, showModal }) {
   const onClickIndi = () => {
     setDataState("indi");
   };
   const onClickTeam = () => {
     setDataState("team");
   };
+
   return (
     <RankDesc>
       <p className="title">3월 TMI 랭킹</p>
@@ -22,7 +23,7 @@ export default function RankHead({ dataState, setDataState }) {
         <span>최근 업데이트</span>
         2022년 03월 24일 09:15:14
       </p>
-      <GuideBtn>랭킹가이드</GuideBtn>
+      <GuideBtn onClick={showModal}>랭킹가이드</GuideBtn>
       <BtnList>
         <UserTeamWrapper>
           <UserIndi
@@ -47,10 +48,9 @@ export default function RankHead({ dataState, setDataState }) {
 
 const RankDesc = styled.div`
   z-index: 5;
-  position: relative;
   width: 1300px;
   padding-top: 50px;
-  margin: 0 5rem;
+  margin: 0 auto;
   background-color: transparent;
 
   & .title {
@@ -84,6 +84,7 @@ const Line = styled.div`
 `;
 
 const GuideBtn = styled.button`
+  cursor: pointer;
   position: absolute;
   top: 110px;
   right: 10rem;
@@ -93,6 +94,20 @@ const GuideBtn = styled.button`
   font-family: Noto Sans KR;
   font-size: 12px;
   font-weight: 500;
+  z-index: 100;
+  outline: 0;
+
+  @media screen and (max-width: 1320px) {
+    right: 165px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    right: 15px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const BtnList = styled.div``;

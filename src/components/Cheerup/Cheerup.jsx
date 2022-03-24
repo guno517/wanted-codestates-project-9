@@ -49,7 +49,7 @@ export default function Cheerup() {
 
     let return_format = YYYY + "-" + MM + "-" + DD;
 
-    console.log(return_format);
+    // console.log(return_format);
     return return_format;
   }
   return (
