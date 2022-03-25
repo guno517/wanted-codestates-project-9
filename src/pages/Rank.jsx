@@ -13,11 +13,6 @@ export default function Rank() {
     "7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a";
   const [dataState, setDataState] = useState("indi");
   const [isOpenModal, setIsOpenModal] = useState(false);
-  // const [player, setPlayer] = useState([]);
-  // const [playerScore, setPlayerScore] = useState();
-
-  // const [data, setData] = useState();
-  // const [result, setResult] = useState();
 
   const showModal = () => {
     setIsOpenModal(!isOpenModal);
@@ -31,58 +26,7 @@ export default function Rank() {
     return <Loading />;
   }
 
-  // const rankData = async () => {
-  //   const rank = await api.get(
-  //     `/kart/v1.0/matches/all?start_date=2022-03-01&end_date=&offset=0&limit=10&match_types=7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a`
-  //   );
-  //   setData(rank.data.matches);
-  //   // return rank.data.matches;
-  // };
-
-  // useEffect(() => {
-  //   rankData();
-  // }, []);
-
-  // const matchIdArr = async () => await data.map((match) => match.matches);
-  // const matchIdArr = data.map((match) => match.matches);
-
-  // matchIdArr[0] &&
-  //   matchIdArr[0].map(async (matchId) => {
-  //     const detailData = await api.get(`/kart/v1.0/matches/${matchId}`);
-  //     setResult(detailData.data.players);
-  //   });
-
-  // // console.log(matchIdArr().then((response) => response));
-  // const getGameData = async () => {
-  //   const playerArr = [];
-  //   if (data !== undefined) {
-  //     await Promise.all(
-  //       matchIdArr[0].map(async (matchId) => {
-  //         const detailData = await api.get(`/kart/v1.0/matches/${matchId}`);
-  //         // .then((response) => response);
-  //         playerArr.push(detailData.data.players);
-  //       })
-  //     );
-  //   }
-  //   setPlayer(playerArr);
-  // };
-
-  // const test = () => {
-  //   const testArr = [];
-  //   player.map((game) => {
-  //     game.map((player) => {
-  //       testArr.push({
-  //         nicmname: player.characterName,
-  //         rank: player.matchRank,
-  //       });
-  //       return testArr;
-  //     });
-  //   });
-  //   setPlayerScore(testArr);
-  // };
-
   return (
-    // <ContentWrapper>
     <RankWrapper>
       <ModalContents openModal={isOpenModal} setOpenModal={setIsOpenModal} />
       {/* <button onClick={getGameData}>테스트1</button> */}
@@ -110,13 +54,10 @@ export default function Rank() {
               </div>
             </Li>
             <RankingListItem />
-            <RankingListItem />
-            <RankingListItem />
           </Ul>
         </RankList>
       </RankListWrapper>
     </RankWrapper>
-    // </ContentWrapper>
   );
 }
 

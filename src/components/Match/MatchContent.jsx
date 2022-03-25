@@ -97,4 +97,5 @@ const MatchContainer = styled.div`
 const Right = styled.div`
   flex: 2;
   padding-top: 40px;
+  overflow: hidden;
 `;
