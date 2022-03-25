@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { GoTriangleDown } from "react-icons/go";
+import MatchDetail from "./MatchDetail";
 
-export default function MatchRight({ matchArr }) {
-  // console.log(matchArr);
-
+export default function MatchRight({ match }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenClick = () => {
@@ -32,9 +31,6 @@ export default function MatchRight({ matchArr }) {
     if (betweenTimeDay < 365) {
       return `${betweenTimeDay}일전`;
     }
-
-    console.log(betweenTime);
-    return `${Math.floor(betweenTimeDay / 365)}년전`;
   }
 
   const playTime = (match) => {
@@ -45,72 +41,33 @@ export default function MatchRight({ matchArr }) {
       let mil = match.playTime.substring(match.playTime.length - 3).slice(0, 2);
       let minute = Math.floor(sec / 60);
       let seconds = sec % 60;
-      //${seconds.toString().padStart(2, 0)}
-      return `${minute}'${seconds.toString().padStart(2, 0)}'${
-        Math.round(mil / 10) * 10
-      }`;
+      return `${minute}'${seconds.toString().padStart(2, 0)}'${mil}`;
     }
   };
-  matchArr.map((match) => {
-    if (match.result === "") {
-      match.result = "99";
-    }
-    return match.result;
-  });
+  if (match.result === "") {
+    match.result = "99";
+  }
   return (
-    <Right>
-      {matchArr &&
-        matchArr.map((match) => {
-          return (
-            <Matches key={match.matchId}>
-              <Match result={match.result}>
-                <MatchDay>{timeForToday(match)}</MatchDay>
-                <MatchRank result={match.result}>
-                  #{match.result === "99" || "" ? "리타이어" : match.result}
-                  <span>
-                    {match.result === "99" ? "" : `/${match.players}`}
-                  </span>
-                </MatchRank>
-                <MatchPlace>{match.track.name}</MatchPlace>
-                <MatchKart>{match.kart.name}</MatchKart>
-                <MatchTime>{playTime(match)}</MatchTime>
-                <MoreData onClick={handleOpenClick}>
-                  <GoTriangleDown />
-                </MoreData>
-              </Match>
-              {/* {isOpen && (
-                <More>
-                  <MoreDataList>
-                    <MoreDataItem>
-                      <MoreDataWrapper>
-                        <MoreDataRank>#</MoreDataRank>
-                        <MoreDataKart>카트</MoreDataKart>
-                        <MoreDataNick>유저</MoreDataNick>
-                        <MoreDataTime>기록</MoreDataTime>
-                      </MoreDataWrapper>
-                    </MoreDataItem>
-                    <MoreDataItem>
-                      <MoreDataWrapper>
-                        <MoreDataRank>#</MoreDataRank>
-                        <MoreDataKart>카트</MoreDataKart>
-                        <MoreDataNick>유저</MoreDataNick>
-                        <MoreDataTime>기록</MoreDataTime>
-                      </MoreDataWrapper>
-                    </MoreDataItem>
-                  </MoreDataList>
-                </More>
-              )} */}
-            </Matches>
-          );
-        })}
-    </Right>
+    <Matches key={match.matchId}>
+      <Match result={match.result}>
+        <MatchDay>{timeForToday(match)}</MatchDay>
+        <MatchRank result={match.result}>
+          #{match.result === "99" || "" ? "리타이어" : match.result}
+          <span>{match.result === "99" ? "" : `/${match.players}`}</span>
+        </MatchRank>
+        <MatchPlace>{match.track.name}</MatchPlace>
+        <MatchKart>{match.kart.name}</MatchKart>
+        <MatchTime>{playTime(match)}</MatchTime>
+        <MoreData onClick={handleOpenClick}>
+          <GoTriangleDown />
+        </MoreData>
+      </Match>
+      {isOpen && (
+        <MatchDetail accountId={match.accountId} matchId={match.matchId} />
+      )}
+    </Matches>
   );
 }
-
-const Right = styled.div`
-  flex: 2;
-  padding-top: 40px;
-`;
 
 const Matches = styled.section``;
 
@@ -183,7 +140,7 @@ const MatchKart = styled.div`
 const MatchTime = styled.div`
   font-weight: 500;
   text-align: center;
-  width: ${(props) => (props.result === "99" ? "" : "50px")};
+  width: ${(props) => (props.result === "99" ? "" : "60px")};
 `;
 
 const MoreData = styled.div`
@@ -195,49 +152,4 @@ const MoreData = styled.div`
   font-weight: 400;
   text-align: center;
   border-left: 1px solid #ebebeb;
-`;
-
-const More = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  height: 177px;
-  margin-top: -5px;
-  margin-bottom: 5px;
-  border-width: 1px 1px 1px 1px;
-  border-color: #f2f2f2;
-  border-style: solid;
-  background-color: white;
-`;
-
-const MoreDataList = styled.ul`
-  list-style: none;
-  margin: 0;
-`;
-
-const MoreDataItem = styled.li`
-  float: left;
-`;
-
-const MoreDataWrapper = styled.div`
-  text-align: center;
-  font-weight: 400;
-  background-color: white;
-`;
-
-const MoreDataRank = styled.div`
-  height: 40px;
-  line-height: 40px;
-  background-color: #f2f2f2;
-`;
-const MoreDataKart = styled.div`
-  height: 78px;
-  line-height: 78px;
-`;
-const MoreDataNick = styled.div`
-  height: 17px;
-  line-height: 17px;
-`;
-const MoreDataTime = styled.div`
-  height: 42px;
-  line-height: 42px;
 `;
