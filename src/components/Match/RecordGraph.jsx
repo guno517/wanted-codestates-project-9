@@ -21,7 +21,7 @@ ChartJS.register(
   Legend
 );
 export default function RecordGraph({ sendData }) {
-  const labelArr = sendData[0].map((time) => time);
+  // const labelArr = sendData[0].map((time) => time);
   const data = {
     // labels: labelArr,
     labels: [

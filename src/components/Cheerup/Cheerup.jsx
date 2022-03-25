@@ -35,23 +35,21 @@ export default function Cheerup() {
     localStorage.setItem(`${nickname}cheerup`, JSON.stringify(container));
     setCheerupData({ nick: "", message: "" });
   };
-  function getNowTime24() {
-    let NOW_DATE = new Date();
+  // function getNowTime24() {
+  //   let NOW_DATE = new Date();
 
-    const UTC = NOW_DATE.getTime() + NOW_DATE.getTimezoneOffset() * 60 * 1000;
+  //   const UTC = NOW_DATE.getTime() + NOW_DATE.getTimezoneOffset() * 60 * 1000;
 
-    const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
-    const KR_DATE = new Date(UTC + KR_TIME_DIFF);
+  //   const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+  //   const KR_DATE = new Date(UTC + KR_TIME_DIFF);
 
-    let YYYY = KR_DATE.getFullYear();
-    let MM = ("00" + (KR_DATE.getMonth() + 1)).slice(-2);
-    let DD = ("00" + KR_DATE.getDate()).slice(-2);
+  //   let YYYY = KR_DATE.getFullYear();
+  //   let MM = ("00" + (KR_DATE.getMonth() + 1)).slice(-2);
+  //   let DD = ("00" + KR_DATE.getDate()).slice(-2);
 
-    let return_format = YYYY + "-" + MM + "-" + DD;
-
-    // console.log(return_format);
-    return return_format;
-  }
+  //   let return_format = YYYY + "-" + MM + "-" + DD;
+  //   return return_format;
+  // }
   return (
     <CheerupWrapper>
       <CheerupTitle>

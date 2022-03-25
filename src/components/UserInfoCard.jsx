@@ -15,7 +15,7 @@ export default function UserInfoCard({
   nickname,
   character,
 }) {
-  const currentUrl = window.location.href;
+  // const currentUrl = window.location.href;
   const onClickIndi = () => {
     setDataState("indi");
   };
