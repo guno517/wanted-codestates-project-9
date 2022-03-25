@@ -78,11 +78,13 @@ PROJECT PERIOD: 2022.03.21 ~ 2022.03.25
 
 ---
 3. 전적 검색
-    - Loading
+ - Loading
 ![Loading](https://user-images.githubusercontent.com/60571418/160112404-31e248ce-c758-4970-87c9-098cb11a3047.gif)
-    - Pie Chart
+
+ - Pie Chart
 ![PieChart](https://user-images.githubusercontent.com/60571418/160112444-1f52d03a-824f-4a62-8ad3-925a94547e98.gif)
-    - 가상 대결
+
+ - 가상 대결
 ![matchingAnimation](https://user-images.githubusercontent.com/60571418/160112473-13e64941-2eff-4cac-bff0-d93e7a24532e.gif)
 
 
