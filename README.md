@@ -36,6 +36,8 @@ PROJECT PERIOD: 2022.03.21 ~ 2022.03.25
     - 개인 전적 조회 페이지의 매칭하기 배경 애니메이션
 
 4. 하나 이상의 vanila script로 만들어진 모듈 구현
+    - 게임 한 판 플레이 시간 계산 모듈
+    - 게임 끝난 후 지난 시간 계산 모듈
 
 **## ✨ 주요 기능**
 
@@ -78,15 +80,21 @@ PROJECT PERIOD: 2022.03.21 ~ 2022.03.25
 
 ---
 3. 전적 검색
- - Loading
+    - Loading
 ![Loading](https://user-images.githubusercontent.com/60571418/160112404-31e248ce-c758-4970-87c9-098cb11a3047.gif)
 
- - Pie Chart
+    - Pie Chart
 ![PieChart](https://user-images.githubusercontent.com/60571418/160112444-1f52d03a-824f-4a62-8ad3-925a94547e98.gif)
 
- - 가상 대결
+    - 가상 대결
 ![matchingAnimation](https://user-images.githubusercontent.com/60571418/160112473-13e64941-2eff-4cac-bff0-d93e7a24532e.gif)
 
+    - 게임 상세 보기
+ ![image](https://user-images.githubusercontent.com/60571418/160120139-f2c904d9-c712-4be6-afb3-7b579c283973.png)
+
+    - 정보 없음 표시
+![image](https://user-images.githubusercontent.com/60571418/160120006-81f7de0f-28b7-478b-b0ac-924d2240ba57.png)
+ 
 
 **## 🛠 사용 기술**
 ---
