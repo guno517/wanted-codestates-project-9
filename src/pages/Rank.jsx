@@ -110,8 +110,6 @@ export default function Rank() {
               </div>
             </Li>
             <RankingListItem />
-            <RankingListItem />
-            <RankingListItem />
           </Ul>
         </RankList>
       </RankListWrapper>
