@@ -4,6 +4,7 @@ import RecordGraph from "./RecordGraph";
 
 export default function MatchLeft({
   sortedTrackData,
+  sortedKartData,
   recordState,
   setRecordState,
 }) {
@@ -56,7 +57,7 @@ export default function MatchLeft({
           <div>
             <span>{recordState}</span>전적
           </div>
-          <div>평균 상위 8.21%</div>
+          <div>평균 상위 -%</div>
         </TableTItle>
         {recordState === "트랙" ? (
           <ChartTable>
@@ -75,17 +76,17 @@ export default function MatchLeft({
                 </Thead>
                 <tbody>
                   {sortedTrackData &&
-                    sortedTrackData.map((game) => {
+                    sortedTrackData.map((game, idx) => {
                       return (
-                        <tr key={game.id}>
+                        <tr key={idx}>
                           <td>
                             <input type={"radio"} />
                           </td>
-                          <td>{game.trackN}</td>
+                          <td>{game.track}</td>
                           <td>{game.count}</td>
                           <td>{Math.round((game.win / game.count) * 100)}%</td>
                           <td>{playTime(game.bestRecord.toString())}</td>
-                          <td>%</td>
+                          <td>-%</td>
                         </tr>
                       );
                     })}
@@ -95,7 +96,15 @@ export default function MatchLeft({
           </ChartTable>
         ) : (
           <ChartTable>
-            {/* <RecordGraph sendData={sendData} /> */}
+            <ImgArea>
+              <p>
+                <span>일반</span>몬스터 X LE
+              </p>
+              <img
+                src="https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/0b41bf8620b5851d7dcc7eb33765d506e530b8d2e612e6c60823f2b890da3401.png?v=1648037340"
+                alt="kart"
+              />
+            </ImgArea>
             <RecordTable>
               <Record>
                 <Thead>
@@ -108,30 +117,22 @@ export default function MatchLeft({
                   </tr>
                 </Thead>
                 <tbody>
-                  {/* {sortedTrackData &&
-                    sortedTrackData.map((game) => {
+                  {sortedKartData &&
+                    sortedKartData.map((game, idx) => {
                       return (
-                        <tr key={game.id}>
+                        <tr key={idx}>
                           <td>
                             <input type={"radio"} />
                           </td>
-                          <td>{game.trackN}</td>
+                          <td>{game.kart}</td>
                           <td>{game.count}</td>
                           <td>{Math.round((game.win / game.count) * 100)}%</td>
-                          <td>{playTime(game.bestRecord.toString())}</td>
-                          <td>%</td>
+                          <td>
+                            {Math.round((game.retire / game.count) * 100)}%
+                          </td>
                         </tr>
                       );
-                    })} */}
-                  <tr>
-                    <td>
-                      <input type={"radio"} />
-                    </td>
-                    <td>몬스터 X LE</td>
-                    <td>195</td>
-                    <td>34%</td>
-                    <td>8%</td>
-                  </tr>
+                    })}
                 </tbody>
               </Record>
             </RecordTable>
@@ -207,6 +208,36 @@ const ChartTable = styled.div`
   border-top: 1px solid #ccc;
   margin: 0 25px;
   padding: 15px 0;
+
+  & p {
+    margin: 0;
+  }
+
+  & img {
+    width: 100px;
+    height: 70px;
+    margin-top: 20px;
+  }
+`;
+
+const ImgArea = styled.div`
+  margin: 0 25px;
+  padding: 15px 0;
+
+  & span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    text-align: center;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    border: 1px solid #1f334a;
+    border-radius: 15px;
+    color: #1f334a;
+  }
 `;
 
 const RecordTable = styled.div`
@@ -228,7 +259,7 @@ const Thead = styled.thead`
   background-color: #e9e9e9;
 
   & th {
-    width: 45px;
+    width: 50px;
   }
 
   & .track {

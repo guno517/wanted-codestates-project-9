@@ -35,10 +35,10 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  margin: 0 5rem;
+  margin: 0 10rem;
   min-width: 1000px;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1300px) {
     margin: 0;
   }
 `;

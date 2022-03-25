@@ -64,6 +64,7 @@ export default function Nav() {
 const NavContainer = styled.div`
   width: 100%;
   background-color: #005fcc;
+  margin: 0 atuo;
 `;
 
 const NavWrapper = styled.div`
@@ -72,10 +73,10 @@ const NavWrapper = styled.div`
   justify-content: space-between;
   padding: 5px 0;
   align-items: center;
-  margin: 0 5rem;
+  margin: 0 10rem;
   min-width: 1000px;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1300px) {
     margin: 0;
   }
 `;
@@ -135,14 +136,11 @@ const TabItem = styled.li`
 
 const NavSearch = styled.div`
   & span {
-    position: absolute;
+    position: relative;
     opacity: 0.5;
-    top: 68px;
-    right: 95px;
+    top: 8px;
+    right: 20px;
     cursor: pointer;
-    @media screen and (max-width: 1200px) {
-      right: 0;
-    }
 
     @media screen and (max-width: 1000px) {
       display: none;
