@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ShareModal({ nickname, shareModal, setShareModal }) {
+export default function ShareModal({ nickname, setShareModal }) {
   const handleShareUrl = () => {
     let textArea = document.createElement("textarea");
-    let link = `wanted-codestates-project-9-guno517.netlify.app/user/${nickname}`;
+    let link = `https://wanted-codestates-project-9-guno517.netlify.app/user/${nickname}`;
 
     document.body.appendChild(textArea);
     textArea.value = link;
@@ -74,6 +74,7 @@ const ShareContent = styled.div`
 const IconImg = styled.img`
   width: 40px;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 const Facebook = styled.div`
