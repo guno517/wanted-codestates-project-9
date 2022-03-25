@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useQuery } from "react-query";
-import { rankData } from "api";
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import { useQuery, useLazyQuery } from "react-query";
+import { rankData, detailRank, api } from "api";
 import Loading from "components/Loading";
 import styled from "styled-components";
 import RankHead from "components/Ranking/RankHead";
 import RankThree from "components/Ranking/RankThree";
 import ModalContents from "components/Ranking/ModalContents";
+import RankingListItem from "components/Ranking/RankingListItem";
 
 export default function Rank() {
   const [matchType, setMatchType] = useState(
@@ -13,6 +14,11 @@ export default function Rank() {
   );
   const [dataState, setDataState] = useState("indi");
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [player, setPlayer] = useState([]);
+  const [playerScore, setPlayerScore] = useState();
+
+  // const [data, setData] = useState();
+  const [result, setResult] = useState();
 
   const showModal = () => {
     setIsOpenModal(!isOpenModal);
@@ -26,10 +32,62 @@ export default function Rank() {
     return <Loading />;
   }
 
+  // const rankData = async () => {
+  //   const rank = await api.get(
+  //     `/kart/v1.0/matches/all?start_date=2022-03-01&end_date=&offset=0&limit=10&match_types=7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a`
+  //   );
+  //   setData(rank.data.matches);
+  //   // return rank.data.matches;
+  // };
+
+  // useEffect(() => {
+  //   rankData();
+  // }, []);
+
+  // const matchIdArr = async () => await data.map((match) => match.matches);
+  // const matchIdArr = data.map((match) => match.matches);
+
+  // matchIdArr[0] &&
+  //   matchIdArr[0].map(async (matchId) => {
+  //     const detailData = await api.get(`/kart/v1.0/matches/${matchId}`);
+  //     setResult(detailData.data.players);
+  //   });
+
+  // // console.log(matchIdArr().then((response) => response));
+  // const getGameData = async () => {
+  //   const playerArr = [];
+  //   if (data !== undefined) {
+  //     await Promise.all(
+  //       matchIdArr[0].map(async (matchId) => {
+  //         const detailData = await api.get(`/kart/v1.0/matches/${matchId}`);
+  //         // .then((response) => response);
+  //         playerArr.push(detailData.data.players);
+  //       })
+  //     );
+  //   }
+  //   setPlayer(playerArr);
+  // };
+
+  // const test = () => {
+  //   const testArr = [];
+  //   player.map((game) => {
+  //     game.map((player) => {
+  //       testArr.push({
+  //         nicmname: player.characterName,
+  //         rank: player.matchRank,
+  //       });
+  //       return testArr;
+  //     });
+  //   });
+  //   setPlayerScore(testArr);
+  // };
+
   return (
     // <ContentWrapper>
     <RankWrapper>
       <ModalContents openModal={isOpenModal} setOpenModal={setIsOpenModal} />
+      {/* <button onClick={getGameData}>테스트1</button> */}
+      {/* <button onClick={test}>테스트2</button> */}
       <RankTop>
         <RankHead
           dataState={dataState}
@@ -52,15 +110,9 @@ export default function Rank() {
                 <span className="avg">평균순위</span>
               </div>
             </Li>
-            <Li>
-              <div className="listItem">
-                <span className="rank">4</span>
-                <span className="nick">1234Kcm</span>
-                <span className="pts">3,608 PT</span>
-                <span className="cnt">508회</span>
-                <span className="avg">2.3위</span>
-              </div>
-            </Li>
+            <RankingListItem />
+            <RankingListItem />
+            <RankingListItem />
           </Ul>
         </RankList>
       </RankListWrapper>
@@ -68,15 +120,6 @@ export default function Rank() {
     // </ContentWrapper>
   );
 }
-
-const ContentWrapper = styled.div`
-  background-color: transparent;
-  min-width: 1000px;
-
-  @media screen and (max-width: 1200px) {
-    margin: 0;
-  }
-`;
 
 const RankWrapper = styled.div`
   position: relative;

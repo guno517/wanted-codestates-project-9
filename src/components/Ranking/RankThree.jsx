@@ -7,8 +7,8 @@ export default function RankThree({ data }) {
   //   staleTime: 60 * 1000,
   // });
 
-  const matchIdArr = data.map((match) => match.matches);
-  const detailMatchArr = async () => {};
+  // const matchIdArr = data.map((match) => match.matches);
+  // const detailMatchArr = async () => {};
 
   return (
     <TopRank>
