@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import { useQuery, useLazyQuery } from "react-query";
-import { rankData, detailRank, api } from "api";
+import React, { useState } from "react";
+import { useQuery } from "react-query";
+import { rankData } from "api";
 import Loading from "components/Loading";
 import styled from "styled-components";
 import RankHead from "components/Ranking/RankHead";
@@ -9,16 +9,15 @@ import ModalContents from "components/Ranking/ModalContents";
 import RankingListItem from "components/Ranking/RankingListItem";
 
 export default function Rank() {
-  const [matchType, setMatchType] = useState(
-    "7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a"
-  );
+  const matchType =
+    "7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a";
   const [dataState, setDataState] = useState("indi");
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [player, setPlayer] = useState([]);
-  const [playerScore, setPlayerScore] = useState();
+  // const [player, setPlayer] = useState([]);
+  // const [playerScore, setPlayerScore] = useState();
 
   // const [data, setData] = useState();
-  const [result, setResult] = useState();
+  // const [result, setResult] = useState();
 
   const showModal = () => {
     setIsOpenModal(!isOpenModal);
