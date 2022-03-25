@@ -16,7 +16,6 @@ export default function MatchContent({ matchArr, data }) {
   const kartDataArr = matchArr.map((match) => match.kart.id);
   const duplicatedTrackId = Array.from(new Set(trackDataArr));
   const duplicatedKartId = Array.from(new Set(kartDataArr));
-  // console.log(duplicatedKartId);
 
   const trackData = duplicatedTrackId.map((id) => {
     const trackIdArr = data.filter((match) => match.trackId === id);

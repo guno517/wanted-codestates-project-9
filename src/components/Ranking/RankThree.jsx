@@ -2,14 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import RankerCard from "./RankerCard";
 
-export default function RankThree({ data }) {
-  // const { matchData } = useQuery([matchId], () => detailMatch(matchId), {
-  //   staleTime: 60 * 1000,
-  // });
-
-  // const matchIdArr = data.map((match) => match.matches);
-  // const detailMatchArr = async () => {};
-
+export default function RankThree() {
   return (
     <TopRank>
       <RankerCard

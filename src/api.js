@@ -12,11 +12,9 @@ export const userData = async (nickname) => {
   const userId = await (
     await api.get(`/kart/v1.0/users/nickname/${nickname}`)
   ).data.accessId;
-  // console.log(userId);
   const data = await api.get(
     `/kart/v1.0/users/${userId}/matches?start_date=&end_date= &offset=0&limit=200`
   );
-  // console.log(data.data.matches[0]);
   return data.data.matches[0].matches;
 };
 
@@ -34,7 +32,5 @@ export const rankData = async () => {
 
 export const detailRank = async (matchId) => {
   const detailData = await api.get(`/kart/v1.0/matches/${matchId}`);
-  // .then((response) => response);
-  console.log(detailData.data.players);
   return detailData.data.players;
 };
