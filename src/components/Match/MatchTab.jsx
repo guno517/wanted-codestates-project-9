@@ -37,11 +37,7 @@ export default function MatchTab({ tabState, setTabState }) {
       <div style={{ display: "flex" }}>
         <TabRetire>리타이어 노출</TabRetire>
         <ToggleWrapper>
-          <ToggleCheckBox
-            type="checkbox"
-            // checked={isToggled}
-            // onChange={handleToggled}
-          />
+          <ToggleCheckBox type="checkbox" />
           <ToggleLabel />
         </ToggleWrapper>
       </div>

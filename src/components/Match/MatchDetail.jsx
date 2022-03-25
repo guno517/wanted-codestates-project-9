@@ -11,18 +11,13 @@ export default function MatchDetail({ accountId, matchId }) {
   if (!data) {
     return <div>loading...</div>;
   }
-  // const sortedArr = data.sort((prev, next) => {
-  //   return prev.matchRank - next.matchRank;
-  // });
 
   data.map((detail) => {
     if (detail.matchRank === "99") {
       detail.matchRank = "리타이어";
     }
     if (detail.length < 8) {
-      // console.log(detail);
     }
-    // console.log(detail.matchRank);
     return detail.matchRank;
   });
 

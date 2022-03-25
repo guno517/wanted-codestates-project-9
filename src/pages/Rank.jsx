@@ -29,8 +29,6 @@ export default function Rank() {
   return (
     <RankWrapper>
       <ModalContents openModal={isOpenModal} setOpenModal={setIsOpenModal} />
-      {/* <button onClick={getGameData}>테스트1</button> */}
-      {/* <button onClick={test}>테스트2</button> */}
       <RankTop>
         <RankHead
           dataState={dataState}

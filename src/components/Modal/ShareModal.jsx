@@ -74,6 +74,7 @@ const ShareContent = styled.div`
 const IconImg = styled.img`
   width: 40px;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 const Facebook = styled.div`
