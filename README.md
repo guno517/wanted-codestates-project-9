@@ -66,12 +66,23 @@ PROJECT PERIOD: 2022.03.21 ~ 2022.03.25
 
 
 1. 메인 화면
+![MainPage](https://user-images.githubusercontent.com/60571418/160112289-d9f5e956-5ed7-4db6-b282-dca3fe5cb680.gif)
+
+![NavBar](https://user-images.githubusercontent.com/60571418/160112357-28d95545-8307-4f2e-9284-6ff2de177321.gif)
 
 ---
 2. 랭킹
 
+![RankAnimation](https://user-images.githubusercontent.com/60571418/160112529-1d64f7db-11f5-485d-bdb8-584d87b4c0b0.gif)
+
 ---
 3. 전적 검색
+
+![Loading](https://user-images.githubusercontent.com/60571418/160112404-31e248ce-c758-4970-87c9-098cb11a3047.gif)
+
+![PieChart](https://user-images.githubusercontent.com/60571418/160112444-1f52d03a-824f-4a62-8ad3-925a94547e98.gif)
+
+![matchingAnimation](https://user-images.githubusercontent.com/60571418/160112473-13e64941-2eff-4cac-bff0-d93e7a24532e.gif)
 
 
 **## 🛠 사용 기술**
