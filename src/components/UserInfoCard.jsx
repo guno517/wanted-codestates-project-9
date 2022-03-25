@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import ReportModal from "./Modal/ReportModal";
+import ShareModal from "./Modal/ShareModal";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { HiUser, HiUserGroup } from "react-icons/hi";
 import { MdRefresh } from "react-icons/md";
@@ -15,16 +17,25 @@ export default function UserInfoCard({
   nickname,
   character,
 }) {
-  // const currentUrl = window.location.href;
+  const [reportModal, setReportModal] = useState(false);
+  const [shareModal, setShareModal] = useState(false);
+
   const onClickIndi = () => {
     setDataState("indi");
   };
   const onClickTeam = () => {
     setDataState("team");
   };
+  const onClickReport = () => {
+    setReportModal(!reportModal);
+  };
+  const onClickShare = () => {
+    setShareModal(!shareModal);
+  };
 
   return (
     <ProfileWrapper>
+      <ReportModal reportModal={reportModal} setReportModal={setReportModal} />
       <ApiInfo>
         <BsFillInfoCircleFill style={{ marginRight: "5px" }} />
         <ApiInfoText>
@@ -65,14 +76,22 @@ export default function UserInfoCard({
               <MdRefresh size={16} />
               전적갱신
             </UserReset>
-            <UserReport>
+            <UserReport onClick={onClickReport}>
               <AiFillBell size={16} />
               신고하기
             </UserReport>
-            <UserShare>
+            <ReportModal />
+            <UserShare onClick={onClickShare}>
               <GiShare size={16} />
               공유하기
             </UserShare>
+            {shareModal && (
+              <ShareModal
+                nickname={nickname}
+                shareModal={shareModal}
+                setShareModal={setShareModal}
+              />
+            )}
           </UserActionWrapper>
         </UserNameWrapper>
         <PageViewWrapper>
@@ -200,6 +219,7 @@ const UserTeam = styled.span`
 const UserActionWrapper = styled.div`
   display: inline-block;
   padding-left: 15px;
+  position: relative;
   & span {
     vertical-align: middle;
     display: inline-block;
