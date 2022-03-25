@@ -1,71 +1,136 @@
-# Getting Started with Create React App
+# 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**## 📑 프로젝트 소개**
 
-## Available Scripts
+WANTED & CODESTATES 프리온보딩 코스
 
-In the project directory, you can run:
+변건오 넥슨코리아 개인 과제 입니다.
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**### < 넥슨코리아 >**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+PROJECT PERIOD: 2022.03.21 ~ 2022.03.25
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[배포링크](wanted-codestates-project-9-guno517.netlify.app)
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**# 카트 OpenAPI를 이용한 전적 검색 사이트 개발**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**### 필수 조건**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. React 프레임워크 사용하여 SPA로 구현
 
-### `npm run eject`
+2. 두 종류 이상의 그레프 포함 필수
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 개인 전적 조회 페이지의 pie graph와 line graph
+- 랭킹 페이지의 pie graph
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. 다섯 종류 이상의 애니메이션 포함 필수
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 상단 Nav 바 아이템과 serach bar hover시 색 변화
+- 홈 화면 Search bar와 캐릭터 애니메이션
+- 랭킹 페이지의 가이드 버튼 클릭 시 캐릭터 움직임 애니메이션
+- 랭킹 페이지와 개인 전적 조회 페이지의 pie graph 채워지는 애니메이션
+- 개인 전적 조회 페이지의 매칭하기 배경 애니메이션
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. 하나 이상의 vanila script로 만들어진 모듈 구현
 
-## Learn More
+**## ✨ 주요 기능**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [상단 Tab bar]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Click을 통해 각각의 Tab으로 이동할 수 있습니다. Tab hover시 애니메이션을 넣습니다.
 
-### Code Splitting
+- Search bar를 통해 유저 닉네임을 입력 후, Search Icon을 클릭해 해당 유저의 전적 조회 페이지로 넘어갑니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [메인 페이지]
 
-### Analyzing the Bundle Size
+- 화면 렌더링 시에 유저 검색 Form과 양쪽 캐릭터 사진에게 애니메이션을 넣었습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- 유저 닉네임을 검색 시 해당 유저의 전적 조회 페이지로 넘어갑니다. (Enter키와 TMI 버튼을 통해 검색 가능합니다.)
 
-### Making a Progressive Web App
+- [개인 전적 조회 페이지]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Loading indicator
 
-### Advanced Configuration
+- 닉네임 검색을 통한 개인 전적 조회
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- radial-gradient, conic-gradient를 통한 pie chart 구현
 
-### Deployment
+- chart.js 라이브러리를 통한 line graph 구현
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- 응원 한마디 (localStorage 사용)
 
-### `npm run build` fails to minify
+- 이용한 트랙, 카트 리스트 조회
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# wanted-codestates-project-guno517-
+- 플레이한 게임의 시간, 랭크, 트랙, 카트 및 같이 플레이한 유저 조회
+
+- 전적 상세 보기에 있는 유저 닉네임 클릭을 통해 해당 유저 전적 조회
+
+- [랭킹 페이지]
+
+- 랭킹 가이드 모달 창 구현
+
+- 랭킹 페이지 레이아웃 구현
+
+<br>
+
+**### 🧔 구성 페이지**
+
+<br>
+
+1. 메인 화면
+
+<br>
+
+2. 랭킹
+
+<br>
+
+3. 전적 검색
+
+<br>
+
+**## 🛠 사용 기술**
+
+front-end
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+
+![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
+
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+
+dev-ops
+
+![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
+
+community
+
+![Discord](https://img.shields.io/badge/DISCORD-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)
+
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+![Apple](https://img.shields.io/badge/-APPLE-black?style=for-the-badge&logo=apple)
+
+![Ubuntu](https://img.shields.io/badge/-UBUNTU-gray?style=for-the-badge&logo=Ubuntu)
+
+**## 소개**
+
+|     이름     | 포지션 |                                                               깃헙                                                                |
+
+| :----------: | :----: | :-------------------------------------------------------------------------------------------------------------------------------: |
+
+| 변건오(팀원) | Front  | [![github](https://img.shields.io/badge/변건오-181717?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/guno517) |
