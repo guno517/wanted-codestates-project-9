@@ -213,6 +213,7 @@ const UserActionWrapper = styled.div`
     text-align: center;
     border: 0.7px solid #1f334a;
     border-radius: 15px;
+    cursor: pointer;
   }
 
   & svg {
