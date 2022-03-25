@@ -35,6 +35,18 @@ export default function MatchDetail({ accountId, matchId }) {
     }
   };
 
+  const compareUser = (a, b) => {
+    if (a.matchRank < b.matchRank) {
+      return -1;
+    }
+    if (a.matchRank > b.matchRank) {
+      return 1;
+    }
+    return 0;
+  };
+
+  data.sort(compareUser);
+
   return (
     <More>
       <MoreDataList>
